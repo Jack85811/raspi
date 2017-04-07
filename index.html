@@ -14,16 +14,19 @@
       <div class="well">
         <div class="container-fluid">
           <div class="row">
-            <div class="container-fluid  col-sm-12 col-md-12  col-xl-12 col-lg-12" ng-controller="myButtonLoaderCtrl">
+            <div class="container-fluid  col-sm-12 col-md-12  col-xs-12 col-lg-12" ng-controller="myButtonLoaderCtrl">
               <div class="row" ng-repeat="button in buttons">
-                <div class="form-group col-sm-12 col-md-12  col-xl-12 col-lg-12">
+                <div class="form-group col-sm-12 col-md-12  col-xs-12 col-lg-12">
                   <label>{{button.name}}</label>
                 </div>
-                <div class="btn-group btn-toggle  col-sm-12 col-md-12  col-xl-12 col-lg-12">
-                  <div class="checkbox">
-                    <label>
-                      <input data-toggle="toggle" type="checkbox" checked="false">
-                    </label>
+                <div class="btn-group   col-sm-12 col-md-12  col-xs-12 col-lg-12">
+                  <div class="row">
+                    <div class=" col-sm-4 col-md-4  col-xs-4 col-lg-4">
+                        <button type="button" class="btn btn-success  btn-lg btn-block">on</button>
+                    </div>
+                    <div class=" col-sm-4 col-md-4  col-xs-4 col-lg-4">
+                        <button type="button" class="btn btn-danger  btn-lg btn-block">off</button>
+                    </div>
                   </div>
                 </div>
               </div>
