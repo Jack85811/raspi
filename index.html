@@ -2,10 +2,12 @@
 <html lang="en-US" ng-app="app">
   <head>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./Modules/jquerey320.js"></script>
+    <script src="./Modules/angular-1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="./Modules/bootstrap-3.3.7/dist/css/bootstrap.min.css"></link>
+    <script src="./Modules/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <link href="./Modules/bootstrap-toggle-master/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="./Modules/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>
     <script src="./js/indexLogic.js"></script>
   </head>
   <body>
@@ -18,8 +20,11 @@
                   <label>{{button.name}}</label>
                 </div>
                 <div class="btn-group btn-toggle  col-sm-12 col-md-12  col-xl-12 col-lg-12">
-                  <button class="btn btn-lg btn-default">ON</button>
-                  <button class="btn btn-lg btn-primary active">OFF</button>
+                  <div class="checkbox">
+                    <label>
+                      <input data-toggle="toggle" type="checkbox" checked="false">
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>

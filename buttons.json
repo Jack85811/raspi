@@ -1,0 +1,11 @@
+[
+  {
+      "id": "1",
+      "name": "Fernseher",
+      "status": "false"
+    }, {
+      "id": "2",
+      "name": "PC",
+      "status": "false"
+    }
+  ]
