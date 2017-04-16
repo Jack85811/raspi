@@ -12,6 +12,12 @@ app.service('myJsonService', function(){
           "status": "false",
           "systemCode": 11101,
           "socketNumber": 2
+        }, {
+          "id": 2,
+          "name": "---",
+          "status": "false",
+          "systemCode": 11101,
+          "socketNumber": 3
         }];
 
       return{
