@@ -36,7 +36,8 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
         var systemcode = JSON.stringify(jsonObject.systemCode);
         var socketNumber = JSON.stringify(jsonObject.socketNumber);
         var status = 1;
-        var urlswitch= "http://localhost:8081/switchon";
+        //var urlswitch= "http://localhost:8081/switchon";
+        var urlswitch= 'http://192.168.0.17:8081/switchon';
         var data = {
           "systemCode": systemcode,
           "socketNumber": socketNumber,
@@ -60,7 +61,7 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
         var systemcode = JSON.stringify(jsonObject.systemCode);
         var socketNumber = JSON.stringify(jsonObject.socketNumber);
         var status = 0;
-        var urlswitch= "http://localhost:8081/switchon";
+        var urlswitch= "http://192.168.0.17:8081/switchon";
         var data = {
           "systemCode": systemcode,
           "socketNumber": socketNumber,
