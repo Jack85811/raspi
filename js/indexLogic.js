@@ -30,12 +30,22 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
         var systemcode = JSON.stringify(jsonObject.systemCode);
         var socketNumber = JSON.stringify(jsonObject.socketNumber);
         var status = 1;
+        var urlswitch= "http://localhost:8081/switchon";
         var data = {
           "systemCode": systemcode,
           "socketNumber": socketNumber,
           "status": status
         }
-        alert(systemcode + "  " + socketNumber +  "  " + status);
+        $http({
+            url: urlswitch,
+            method: "POST",
+            data: data,
+            headers: {'Content-Type': 'application/json'}
+        }).success(function(response) {
+                alert("succes");
+        }).error(function (response) {
+          alert("fail");
+        });
 
     };
 
@@ -60,8 +70,6 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
         }).error(function (response) {
           alert("fail");
         });
-
-        //alert(systemcode + "  " + socketNumber +  "  " + status);
     };
 
     function callHttp(systemcode, socketNumber, status){
