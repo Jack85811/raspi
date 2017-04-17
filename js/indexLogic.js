@@ -1,6 +1,6 @@
-var app = angular.module('app',[]);
+var app = angular.module('app', []);
 
-app.service('myJsonService', function(){
+app.service('myJsonService', function () {
     var buttons = [{
           "id": 0,
           "name": "Fernseher",
@@ -82,7 +82,7 @@ app.controller('buttonLoaderCtrl', function($scope, myJsonService, $http) {
     }
 
 });
-
+/*
 app.controller('allTurnOffCtrl', function ($scope, myJsonService, $http) {
 
     $scope.clickButtonTurnOffAll = function () {
@@ -120,7 +120,7 @@ app.controller('allTurnOffCtrl', function ($scope, myJsonService, $http) {
           var data = {
             "systemCode": systemcode,
             "socketNumber": socketNumber,
-            "status": status
+            "status": statuss
           }
           $http({
               url: urlswitch,
@@ -136,4 +136,4 @@ app.controller('allTurnOffCtrl', function ($scope, myJsonService, $http) {
   };
 
 
-});
+});*/
