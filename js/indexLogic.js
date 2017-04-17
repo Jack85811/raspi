@@ -4,19 +4,17 @@ var app = angular.module('app',[]);
 app.service('myJsonService', function(){
     var buttons = [{
           "id": 0,
-          "name": "Fernseher",
+          "name": "A",
           "systemCode": 11101,
           "socketNumber": 1
         }, {
           "id": 1,
-          "name": "PC",
-          "status": "false",
+          "name": "B",
           "systemCode": 11101,
           "socketNumber": 2
         }, {
           "id": 2,
-          "name": "---",
-          "status": "false",
+          "name": "C",
           "systemCode": 11101,
           "socketNumber": 3
         }];
@@ -37,8 +35,7 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
         var systemcode = JSON.stringify(jsonObject.systemCode);
         var socketNumber = JSON.stringify(jsonObject.socketNumber);
         var status = 1;
-        //var urlswitch= "http://localhost:8081/switchon";
-        var urlswitch= 'http://192.168.0.17:8081/switchon';
+        var urlswitch= 'http://192.168.0.17:8081/switch';
         var data = {
           "systemCode": systemcode,
           "socketNumber": socketNumber,
@@ -48,12 +45,10 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
     };
 
     $scope.clickAllButtonOn = function () {
-        var jsonButtons = myJsonService.getButtons();
-        var count = Object.keys(jsonButtons).length;
-        console.log(count);
-        for(i=0;i<=count;i++){
-            $scope.clickButtonOn(jsonButtons[i].id);
-        };
+        var json = myJsonService.getButtons();
+        var status = 1;
+        var urlswitch= 'http://192.168.0.17:8081/switchallon';
+        callHttp(urlswitch,json);
     };
 
     $scope.clickButtonOff = function (buttonId) {
@@ -61,7 +56,7 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
         var systemcode = JSON.stringify(jsonObject.systemCode);
         var socketNumber = JSON.stringify(jsonObject.socketNumber);
         var status = 0;
-        var urlswitch= "http://192.168.0.17:8081/switchon";
+        var urlswitch= "http://192.168.0.17:8081/switch";
         var data = {
           "systemCode": systemcode,
           "socketNumber": socketNumber,
@@ -70,13 +65,10 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
         callHttp(urlswitch, data);
     };
     $scope.clickAllButtonOff = function () {
-      var jsonButtons = myJsonService.getButtons();
-      jsonButtons.forEach( function (buttonObj){
-        setTimeout(function () {
-          //alert(buttonObj.id);
-          $scope.clickButtonOff(buttonObj.id);
-        }, 1000);
-      });
+      var json = myJsonService.getButtons();
+      var status = 1;
+      var urlswitch= 'http://192.168.0.17:8081/switchalloff';
+      callHttp(urlswitch,json);
     };
 
     function callHttp(urlswitch, data){
@@ -84,11 +76,12 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
          url: urlswitch,
          method: "POST",
          data: data,
-         headers: {'Content-Type': 'application/json'}
+         headers: {'Content-Type': 'application/json'},
+         async : false
      }).success(function(response) {
 
      }).error(function (response) {
-       alert("fail");
+       alert("failed to connect");
      });
     }
 
