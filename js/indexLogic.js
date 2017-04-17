@@ -57,6 +57,31 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
 
     };
 
+    $scope.clickAllButtonOn = function () {
+        var jsonButtons = myJsonService.getButtons();
+        jsonButtons.forEach( function (buttonObj){
+          var systemcode = JSON.stringify(buttonObj.systemCode);
+          var socketNumber = JSON.stringify(buttonObj.socketNumber);
+          var status = 1;
+          var urlswitch= 'http://192.168.0.17:8081/switchon';
+          var data = {
+            "systemCode": systemcode,
+            "socketNumber": socketNumber,
+            "status": status
+          }
+          $http({
+              url: urlswitch,
+              method: "POST",
+              data: data,
+              headers: {'Content-Type': 'application/json'}
+          }).success(function(response) {
+                  alert("succes");
+          }).error(function (response) {
+            alert("fail");
+          });
+        });
+    };
+
     $scope.clickButtonOff = function (buttonId) {
         var jsonObject = myJsonService.getButtons()[buttonId];
         var systemcode = JSON.stringify(jsonObject.systemCode);
@@ -77,6 +102,30 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
                 alert("succes");
         }).error(function (response) {
           alert("fail");
+        });
+    };
+    $scope.clickAllButtonOff = function () {
+        var jsonButtons = myJsonService.getButtons();
+        jsonButtons.forEach( function (buttonObj){
+          var systemcode = JSON.stringify(buttonObj.systemCode);
+          var socketNumber = JSON.stringify(buttonObj.socketNumber);
+          var status = 0;
+          var urlswitch= "http://192.168.0.17:8081/switchon";
+          var data = {
+            "systemCode": systemcode,
+            "socketNumber": socketNumber,
+            "status": status
+          }
+          $http({
+              url: urlswitch,
+              method: "POST",
+              data: data,
+              headers: {'Content-Type': 'application/json'}
+          }).success(function(response) {
+                  alert("succes");
+          }).error(function (response) {
+            alert("fail");
+          });
         });
     };
 
