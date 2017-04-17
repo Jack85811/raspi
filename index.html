@@ -13,8 +13,8 @@
   <body ng-controller="buttonLoaderCtrl">
       <div class="well">
         <div class="container-fluid">
-          <div class="row" ng-repeat="button in buttons">
-            <div class="form-group col-sm-12 col-md-12  col-xs-12 col-lg-12">
+          <div class="row" >
+            <div class="form-group col-sm-12 col-md-12  col-xs-12 col-lg-12" ng-repeat="button in buttons">
                 <label>{{button.name}}</label>
             </div>
             <div class="btn-group   col-sm-12 col-md-12  col-xs-12 col-lg-12">
@@ -30,7 +30,7 @@
           </div>
         </div>
     </div>
-      <div class="well"  >
+      <div class="well">
         <div class="container-fluid">
           <div class="row">
             <div class="form-group col-sm-12 col-md-12  col-xs-12 col-lg-12">
