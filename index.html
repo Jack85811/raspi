@@ -11,11 +11,12 @@
     <script src="./js/indexLogic.js"></script>
   </head>
   <body>
-      <div class="well">
+    <div class="container-fluid" ng-controller="myButtonLoaderCtrl">
+      <div class="well" ng-repeat="button in buttons">
         <div class="container-fluid">
           <div class="row">
-            <div class="container-fluid  col-sm-12 col-md-12  col-xs-12 col-lg-12" ng-controller="myButtonLoaderCtrl">
-              <div class="row" ng-repeat="button in buttons">
+            <div class="container-fluid  col-sm-12 col-md-12  col-xs-12 col-lg-12">
+              <div class="row" >
                 <div class="form-group col-sm-12 col-md-12  col-xs-12 col-lg-12">
                   <label>{{button.name}}</label>
                 </div>
@@ -34,5 +35,6 @@
           </div>
         </div>
       </div>
+    </div>
   </body>
 </html>
