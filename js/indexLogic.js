@@ -82,7 +82,7 @@ app.controller('buttonLoaderCtrl', function($scope, myJsonService, $http) {
     }
 
 });
-/*
+
 app.controller('allTurnOffCtrl', function ($scope, myJsonService, $http) {
 
     $scope.clickButtonTurnOffAll = function () {
@@ -120,7 +120,7 @@ app.controller('allTurnOffCtrl', function ($scope, myJsonService, $http) {
           var data = {
             "systemCode": systemcode,
             "socketNumber": socketNumber,
-            "status": statuss
+            "status": status
           }
           $http({
               url: urlswitch,
@@ -136,4 +136,4 @@ app.controller('allTurnOffCtrl', function ($scope, myJsonService, $http) {
   };
 
 
-});*/
+});
