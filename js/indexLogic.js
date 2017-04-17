@@ -28,7 +28,7 @@ app.service('myJsonService', function(){
       }
 });
 
-app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
+app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $timeout) {
 
     $scope.buttons = myJsonService.getButtons();
 
@@ -44,41 +44,16 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
           "socketNumber": socketNumber,
           "status": status
         }
-        $http({
-            url: urlswitch,
-            method: "POST",
-            data: data,
-            headers: {'Content-Type': 'application/json'}
-        }).success(function(response) {
-                alert("succes");
-        }).error(function (response) {
-          alert("fail");
-        });
-
+        callHttp(urlswitch, data)
     };
 
     $scope.clickAllButtonOn = function () {
         var jsonButtons = myJsonService.getButtons();
         jsonButtons.forEach( function (buttonObj){
-          var systemcode = JSON.stringify(buttonObj.systemCode);
-          var socketNumber = JSON.stringify(buttonObj.socketNumber);
-          var status = 1;
-          var urlswitch= 'http://192.168.0.17:8081/switchon';
-          var data = {
-            "systemCode": systemcode,
-            "socketNumber": socketNumber,
-            "status": status
-          }
-          $http({
-              url: urlswitch,
-              method: "POST",
-              data: data,
-              headers: {'Content-Type': 'application/json'}
-          }).success(function(response) {
-                  alert("succes");
-          }).error(function (response) {
-            alert("fail");
-          });
+          setTimeout(function () {
+            //alert(buttonObj.id);
+            $scope.clickButtonOn(buttonObj.id);
+          }, 1000);
         });
     };
 
@@ -93,16 +68,7 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
           "socketNumber": socketNumber,
           "status": status
         }
-        $http({
-            url: urlswitch,
-            method: "POST",
-            data: data,
-            headers: {'Content-Type': 'application/json'}
-        }).success(function(response) {
-                alert("succes");
-        }).error(function (response) {
-          alert("fail");
-        });
+        callHttp(urlswitch, data);
     };
     $scope.clickAllButtonOff = function () {
         var jsonButtons = myJsonService.getButtons();
@@ -116,21 +82,21 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
             "socketNumber": socketNumber,
             "status": status
           }
-          $http({
-              url: urlswitch,
-              method: "POST",
-              data: data,
-              headers: {'Content-Type': 'application/json'}
-          }).success(function(response) {
-                  alert("succes");
-          }).error(function (response) {
-            alert("fail");
-          });
+          callHttp(urlswitch, data);
         });
     };
 
-    function callHttp(systemcode, socketNumber, status){
+    function callHttp(urlswitch, data){
+      return $http({
+         url: urlswitch,
+         method: "POST",
+         data: data,
+         headers: {'Content-Type': 'application/json'}
+     }).success(function(response) {
 
+     }).error(function (response) {
+       alert("fail");
+     });
     }
 
 });
