@@ -1,6 +1,7 @@
-var app = angular.module('app', []);
 
-app.service('myJsonService', function () {
+var app = angular.module('app',[]);
+
+app.service('myJsonService', function(){
     var buttons = [{
           "id": 0,
           "name": "Fernseher",
@@ -19,6 +20,7 @@ app.service('myJsonService', function () {
           "systemCode": 11101,
           "socketNumber": 3
         }];
+
       return{
         getButtons: function (){
             return buttons;
@@ -26,7 +28,7 @@ app.service('myJsonService', function () {
       }
 });
 
-app.controller('buttonLoaderCtrl', function($scope, myJsonService, $http) {
+app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
 
     $scope.buttons = myJsonService.getButtons();
 
@@ -35,6 +37,7 @@ app.controller('buttonLoaderCtrl', function($scope, myJsonService, $http) {
         var systemcode = JSON.stringify(jsonObject.systemCode);
         var socketNumber = JSON.stringify(jsonObject.socketNumber);
         var status = 1;
+        //var urlswitch= "http://localhost:8081/switchon";
         var urlswitch= 'http://192.168.0.17:8081/switchon';
         var data = {
           "systemCode": systemcode,
@@ -76,7 +79,6 @@ app.controller('buttonLoaderCtrl', function($scope, myJsonService, $http) {
           alert("fail");
         });
     };
-
 
     function callHttp(systemcode, socketNumber, status){
 
