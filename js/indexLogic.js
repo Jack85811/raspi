@@ -125,7 +125,7 @@ app.controller('buttonLoaderCtrl', function($scope, myJsonService, $http) {
                 alert("fail");
           });
       });
-  };
+    };
 
     function callHttp(systemcode, socketNumber, status){
 
