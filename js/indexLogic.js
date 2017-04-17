@@ -19,7 +19,6 @@ app.service('myJsonService', function(){
           "systemCode": 11101,
           "socketNumber": 3
         }];
-
       return{
         getButtons: function (){
             return buttons;
@@ -27,7 +26,7 @@ app.service('myJsonService', function(){
       }
 });
 
-app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
+app.controller('buttonLoaderCtrl', function($scope, myJsonService, $http) {
 
     $scope.buttons = myJsonService.getButtons();
 
@@ -36,7 +35,6 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
         var systemcode = JSON.stringify(jsonObject.systemCode);
         var socketNumber = JSON.stringify(jsonObject.socketNumber);
         var status = 1;
-        //var urlswitch= "http://localhost:8081/switchon";
         var urlswitch= 'http://192.168.0.17:8081/switchon';
         var data = {
           "systemCode": systemcode,
@@ -82,5 +80,60 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http) {
     function callHttp(systemcode, socketNumber, status){
 
     }
+
+});
+
+app.controller('allTurnOffCtrl', function ($scope, myJsonService, $http) {
+
+    $scope.clickButtonTurnOffAll = function () {
+        var buttons = myJsonService.getButtons();
+        buttons.forEach(function (jsonObject) {
+            var systemcode = JSON.stringify(jsonObject.systemCode);
+            var socketNumber = JSON.stringify(jsonObject.socketNumber);
+            var status = 0;
+            var urlswitch= "http://192.168.0.17:8081/switchon";
+            var data = {
+              "systemCode": systemcode,
+              "socketNumber": socketNumber,
+              "status": status
+            }
+            $http({
+                url: urlswitch,
+                method: "POST",
+                data: data,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function(response) {
+                  alert(socketNumber + "  " );
+            }).error(function (response) {
+                  alert("fail");
+            });
+        });
+    };
+
+    $scope.clickButtonTurnOnAll = function () {
+      var buttons = myJsonService.getButtons();
+      buttons.forEach(function (jsonObject) {
+          var systemcode = JSON.stringify(jsonObject.systemCode);
+          var socketNumber = JSON.stringify(jsonObject.socketNumber);
+          var status = 1;
+          var urlswitch= "http://192.168.0.17:8081/switchon";
+          var data = {
+            "systemCode": systemcode,
+            "socketNumber": socketNumber,
+            "status": status
+          }
+          $http({
+              url: urlswitch,
+              method: "POST",
+              data: data,
+              headers: {'Content-Type': 'application/json'}
+          }).success(function(response) {
+                alert(socketNumber + "  " );
+          }).error(function (response) {
+                alert("fail");
+          });
+      });
+  };
+
 
 });
