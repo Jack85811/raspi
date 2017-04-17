@@ -49,12 +49,11 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
 
     $scope.clickAllButtonOn = function () {
         var jsonButtons = myJsonService.getButtons();
-        jsonButtons.forEach( function (buttonObj){
-          setTimeout(function () {
-            //alert(buttonObj.id);
-            $scope.clickButtonOn(buttonObj.id);
-          }, 1000);
-        });
+        var count = Object.keys(jsonButtons).length;
+        console.log(count);
+        for(i=0;i<=count;i++){
+            $scope.clickButtonOn(jsonButtons[i].id);
+        };
     };
 
     $scope.clickButtonOff = function (buttonId) {
@@ -71,19 +70,13 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
         callHttp(urlswitch, data);
     };
     $scope.clickAllButtonOff = function () {
-        var jsonButtons = myJsonService.getButtons();
-        jsonButtons.forEach( function (buttonObj){
-          var systemcode = JSON.stringify(buttonObj.systemCode);
-          var socketNumber = JSON.stringify(buttonObj.socketNumber);
-          var status = 0;
-          var urlswitch= "http://192.168.0.17:8081/switchon";
-          var data = {
-            "systemCode": systemcode,
-            "socketNumber": socketNumber,
-            "status": status
-          }
-          callHttp(urlswitch, data);
-        });
+      var jsonButtons = myJsonService.getButtons();
+      jsonButtons.forEach( function (buttonObj){
+        setTimeout(function () {
+          //alert(buttonObj.id);
+          $scope.clickButtonOff(buttonObj.id);
+        }, 1000);
+      });
     };
 
     function callHttp(urlswitch, data){
