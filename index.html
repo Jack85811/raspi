@@ -10,8 +10,8 @@
     <script src="./Modules/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>
     <script src="./js/indexLogic.js"></script>
   </head>
-  <body>
-    <div class="container-fluid" ng-controller="buttonLoaderCtrl">
+  <body ng-controller="buttonLoaderCtrl">
+    <div class="container-fluid" >
       <div class="well"  ng-repeat="button in buttons">
         <div class="container-fluid">
           <div class="row">
@@ -32,9 +32,9 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid" >
+    <div class="container-fluid">
       <div class="well" >
-        <div class="container-fluid" ng-controller="allTurnOffCtrl">
+        <div class="container-fluid" >
           <div class="row">
             <div class="form-group col-sm-12 col-md-12  col-xs-12 col-lg-12">
                 <label>Alle Steckdosen</label>

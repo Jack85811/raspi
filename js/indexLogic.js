@@ -77,14 +77,6 @@ app.controller('buttonLoaderCtrl', function($scope, myJsonService, $http) {
         });
     };
 
-    function callHttp(systemcode, socketNumber, status){
-
-    }
-
-});
-
-app.controller('allTurnOffCtrl', function ($scope, myJsonService, $http) {
-
     $scope.clickButtonTurnOffAll = function () {
         var buttons = myJsonService.getButtons();
         buttons.forEach(function (jsonObject) {
@@ -135,5 +127,8 @@ app.controller('allTurnOffCtrl', function ($scope, myJsonService, $http) {
       });
   };
 
+    function callHttp(systemcode, socketNumber, status){
+
+    }
 
 });
