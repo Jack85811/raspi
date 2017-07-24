@@ -35,7 +35,7 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
         var systemcode = JSON.stringify(jsonObject.systemCode);
         var socketNumber = JSON.stringify(jsonObject.socketNumber);
         var status = 1;
-        var urlswitch= 'http://192.168.0.17:8081/switch';
+        var urlswitch= 'http://192.168.0.56:8081/switch';
         var data = {
           "systemCode": systemcode,
           "socketNumber": socketNumber,
@@ -47,7 +47,7 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
     $scope.clickAllButtonOn = function () {
         var json = myJsonService.getButtons();
         var status = 1;
-        var urlswitch= 'http://192.168.0.17:8081/switchallon';
+        var urlswitch= 'http://192.168.0.56:8081/switchallon';
         callHttp(urlswitch,json);
     };
 
@@ -56,7 +56,7 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
         var systemcode = JSON.stringify(jsonObject.systemCode);
         var socketNumber = JSON.stringify(jsonObject.socketNumber);
         var status = 0;
-        var urlswitch= "http://192.168.0.17:8081/switch";
+        var urlswitch= "http://192.168.0.56:8081/switch";
         var data = {
           "systemCode": systemcode,
           "socketNumber": socketNumber,
@@ -67,7 +67,7 @@ app.controller('myButtonLoaderCtrl', function($scope, myJsonService, $http,  $ti
     $scope.clickAllButtonOff = function () {
       var json = myJsonService.getButtons();
       var status = 1;
-      var urlswitch= 'http://192.168.0.17:8081/switchalloff';
+      var urlswitch= 'http://192.168.0.56:8081/switchalloff';
       callHttp(urlswitch,json);
     };
 
