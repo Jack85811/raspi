@@ -1,0 +1,19 @@
+{
+  "name": "raspi-socket-remote",
+  "version": "1.0.0",
+  "description": "",
+  "main": "raspiServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jack85811/raspi-socket-remote.git"
+  },
+  "author": "Jack Sliwa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jack85811/raspi-socket-remote/issues"
+  },
+  "homepage": "https://github.com/Jack85811/raspi-socket-remote#readme"
+}
