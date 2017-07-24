@@ -22,7 +22,7 @@ app.service('myJsonService', function(){
       return{
         getButtons: function (){
             return buttons;
-        }
+        } 
       }
 });
 
